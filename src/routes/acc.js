@@ -1,7 +1,7 @@
 const express = require('express')
 const router  = express.Router()
-const {AccountController} = require('../app/controllers/AccountController')
+const {getAccs} = require('../app/controllers/AccountController')
 
-router.get('/',AccountController)
+router.get('/',getAccs)
 
 module.exports = router

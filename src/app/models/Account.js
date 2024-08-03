@@ -5,6 +5,7 @@ const Account = new Schema({
     phone : { type : String , },
     password : { type : String, }, 
     role : { type : String, },
+
 })
 
 module.exports = mongoose.model('Account' , Account)
