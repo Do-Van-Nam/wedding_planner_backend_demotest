@@ -17,7 +17,8 @@ const LoginController = async (req, res) => {
 
             const payload = {
                 userId: acc._id,
-                userPhone: acc.phone
+                userPhone: acc.phone,
+                userRole: acc.role
             }
             jwt.sign(payload, process.env.JWT_SECRET , { expiresIn: '4h' }, (err, token) => {
                 if (err) {
@@ -25,7 +26,7 @@ const LoginController = async (req, res) => {
                     return res.status(500).json({ message: 'Token generation failed' })
                 }
                     
-                res.json({ token: token, role: acc.role })
+                res.json({ token: token, user:acc })
             })
         })
     } catch (error) {

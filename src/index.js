@@ -4,10 +4,13 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 
 const dbaccs = require('./config/db/dbaccs')
+const dbbuildings = require('./config/db/dbbuildings')
+const dbrooms = require('./config/db/dbrooms')
 
 //connect DB
 dbaccs.connect()
-
+dbbuildings.connect()
+dbrooms.connect()
 
 
 const app = express()

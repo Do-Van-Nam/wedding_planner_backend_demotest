@@ -1,4 +1,6 @@
 const Account = require('../models/Account')
+const bcrypt = require('bcryptjs');
+
 
 const getAccs = async (req, res) => {
     try {
@@ -34,7 +36,7 @@ const createAcc = async (req, res) => {
     }
 }
 const updateAcc = async (req, res) => {
-    const id = req.params
+    const id = req.params.id
     let {  phone, password, role, roomId } = req.body
     try {
 
@@ -60,7 +62,7 @@ const updateAcc = async (req, res) => {
     }
 }
 const deleteAcc  = async (req,res)=>{
-    const id = req.params
+    const id = req.params.id
     try {
         const deletedAcc = await Account.findByIdAndDelete(id)
         if(!deletedAcc){
