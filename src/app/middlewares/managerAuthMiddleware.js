@@ -1,10 +1,14 @@
 const jwt = require('jsonwebtoken')
+const cookieParser = require('cookie-parser')
 
 const managerAuthMiddleware = (req, res, next) => {
-    const authHeader = req.header('Authorization')
+    // const authHeader = req.header('Authorization')
 
-    if (!authHeader) return res.status(401).json({ message: 'No token, authorization denied' })
-    const token = authHeader.split(' ')[1]
+    // if (!authHeader) return res.status(401).json({ message: 'No token, authorization denied' })
+    // const token = authHeader.split(' ')[1]
+    
+    const token = req.cookies?.token
+    console.log('Token received:', token);
     if (!token) return res.status(401).json({ message: 'Token invalid, authorization denied' })
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET)
@@ -19,6 +23,7 @@ const managerAuthMiddleware = (req, res, next) => {
         next()
     } catch (error) {
         res.status(401).json({ message: 'No token, authorization denied' })
+        console.log(error)
     }
 }
 

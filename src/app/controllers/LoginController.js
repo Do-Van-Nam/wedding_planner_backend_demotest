@@ -20,14 +20,24 @@ const LoginController = async (req, res) => {
                 userPhone: acc.phone,
                 userRole: acc.role
             }
-            jwt.sign(payload, process.env.JWT_SECRET , { expiresIn: '4h' }, (err, token) => {
-                if (err) {
-                    console.error('Token generation failed:', err);
-                    return res.status(500).json({ message: 'Token generation failed' })
-                }
-                    
-                res.json({ token: token, user:acc })
+            const token = jwt.sign(payload, process.env.JWT_SECRET
+                // (err, token) => {
+                // if (err) {
+                //     console.error('Token generation failed:', err);
+                //     return res.status(500).json({ message: 'Token generation failed' })
+                // }
+
+
+                // }
+            )
+            res.cookie('token', token, {
+                // httpOnly: true,
+                // secure: true,
+                // sameSite: 'none',
+                maxAge: 4 * 60 * 60 * 1000
             })
+            res.json({ user: acc })
+
         })
     } catch (error) {
         console.log(error)
