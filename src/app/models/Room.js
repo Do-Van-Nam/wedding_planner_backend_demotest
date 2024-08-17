@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 
 const Room = new Schema({
     roomName : { type : String , },
-    customerId : { type : String, },
+    tenantId : { type : String, },
     buildingId : { type : String, },
     floor : { type : Number, },
     isRented: {type:Boolean},

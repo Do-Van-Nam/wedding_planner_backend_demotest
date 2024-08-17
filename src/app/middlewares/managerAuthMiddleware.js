@@ -8,7 +8,6 @@ const managerAuthMiddleware = (req, res, next) => {
     // const token = authHeader.split(' ')[1]
     
     const token = req.cookies?.token
-    console.log('Token received:', token);
     if (!token) return res.status(401).json({ message: 'Token invalid, authorization denied' })
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET)

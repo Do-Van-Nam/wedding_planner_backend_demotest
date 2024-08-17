@@ -32,6 +32,7 @@ const createBuilding = async (req, res) => {
             name, ownerId,address,noRoom,noFloor
         })
         await building.save()
+        res.json({building})
     } catch (error) {
         console.log(error)
         return res.status(400).json({ message: 'Server error' })
@@ -49,7 +50,7 @@ const updateBuilding = async (req, res) => {
         if(!updatedBuilding1){
         return res.status(404).json({ message: 'Building not found' })
         }
-        return res.status(200).json(updatedBuilding1)
+        return res.status(200).json({updatedBuilding1})
     } catch (error) {
         console.log(error)
         return res.status(400).json({ message: 'Server error' })
@@ -62,7 +63,7 @@ const deleteBuilding  = async (req,res)=>{
         if(!deletedBuilding){
             return res.status(404).json({message: 'Building not found'})
         }
-        return res.status(200).json({message: 'Building deleted successfully!'})
+        return res.status(200).json({deletedBuilding})
 
     } catch (error) {
         res.status(400).json({ message: error.message });

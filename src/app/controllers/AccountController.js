@@ -12,7 +12,7 @@ const getAccs = async (req, res) => {
     }
 }
 const createAcc = async (req, res) => {
-    const { phone, password, role, roomId } = req.body
+    const {name, phone, password, role } = req.body
     try {
         let acc = await Account.findOne({ phone })
         if (acc) {
@@ -24,12 +24,13 @@ const createAcc = async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, salt)
 
         acc = new Account({
+            name,
             phone: phone,
             password: hashedPassword,
             role: role,
-            roomId: roomId,
         })
         await acc.save()
+        return res.status(200).json({acc})
     } catch (error) {
         console.log(error)
         return res.status(400).json({ message: 'Server error' })
@@ -37,7 +38,7 @@ const createAcc = async (req, res) => {
 }
 const updateAcc = async (req, res) => {
     const id = req.params.id
-    let {  phone, password, role, roomId } = req.body
+    let { name, phone, password, role } = req.body
     try {
 
         // ma hoa mat khau 
@@ -45,10 +46,10 @@ const updateAcc = async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, salt)
 
         const updatedAccount = {
+            name,
             phone,
             hashedPassword,
-            role,
-            roomId
+            role
         }
 
         const updatedAcc = await Account.findByIdAndUpdate(id,updatedAccount,{new : true})

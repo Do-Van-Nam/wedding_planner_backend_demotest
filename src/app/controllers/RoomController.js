@@ -21,7 +21,7 @@ const getRoomById = async (req, res) => {
     }
 }
 const createRoom = async (req, res) => {
-    const { roomName,customerId,buildingId,floor,isRented,price,startday,noPrepaidMonths } = req.body
+    const { roomName,tenantId,buildingId,floor,isRented,price,startday,noPrepaidMonths } = req.body
     try {
         let room = await Room.findOne({ roomName, buildingId })
         if (room) {
@@ -29,7 +29,7 @@ const createRoom = async (req, res) => {
         }
 
         room = new Room({
-            roomName,customerId,buildingId,floor,isRented,price,startday,noPrepaidMonths
+            roomName,tenantId,buildingId,floor,isRented,price,startday,noPrepaidMonths
         })
         await room.save()
     } catch (error) {
@@ -39,10 +39,10 @@ const createRoom = async (req, res) => {
 }
 const updateRoom = async (req, res) => {
     const id = req.params.id
-    let { roomName,customerId,buildingId,floor,isRented,price,startday,noPrepaidMonths } = req.body
+    let { roomName,tenantId,buildingId,floor,isRented,price,startday,noPrepaidMonths } = req.body
     try {
         const updatedRoom = {
-            roomName,customerId,buildingId,floor,isRented,price,startday,noPrepaidMonths
+            roomName,tenantId,buildingId,floor,isRented,price,startday,noPrepaidMonths
         }
 
         const updatedRoom1 = await Room.findByIdAndUpdate(id, updatedRoom, { new: true })
