@@ -8,7 +8,7 @@ const LogoutRouter = require('./logout')
 function route(app){
     app.use('/signup',SignupRouter)
     app.use('/login',LoginRouter)
-    app.use('/accs',AccRouter)
+    app.use('/acc',AccRouter)
     app.use('/building',BuildingRouter)
     app.use('/room',RoomRouter)
     app.use('/logout',LogoutRouter)

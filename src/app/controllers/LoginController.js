@@ -16,9 +16,9 @@ const LoginController = async (req, res) => {
             if (!isMatch) return res.status(400).json({ message: 'Password is incorrect' })
 
             const payload = {
-                userId: acc._id,
-                userPhone: acc.phone,
-                userRole: acc.role
+                _id: acc._id,
+                phone: acc.phone,
+                role: acc.role
             }
             const token = jwt.sign(payload, process.env.JWT_SECRET
                 // (err, token) => {
@@ -31,8 +31,8 @@ const LoginController = async (req, res) => {
                 // }
             )
             res.cookie('token', token, {
-                // httpOnly: true,
-                // secure: true,
+                httpOnly: true,
+                secure: true,
                 // sameSite: 'none',
                 maxAge: 4 * 60 * 60 * 1000
             })

@@ -24,7 +24,7 @@ const createAcc = async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, salt)
 
         acc = new Account({
-            name,
+            name:name,
             phone: phone,
             password: hashedPassword,
             role: role,
@@ -77,4 +77,8 @@ const deleteAcc  = async (req,res)=>{
 
 }
 
-module.exports = { getAccs, createAcc , updateAcc ,deleteAcc }
+const checkAuth= async (req,res)=>{
+    res.json({user:req.user})
+}
+
+module.exports = { getAccs, createAcc , updateAcc ,deleteAcc,checkAuth }

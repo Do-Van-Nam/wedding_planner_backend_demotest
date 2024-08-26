@@ -15,7 +15,7 @@ const managerAuthMiddleware = (req, res, next) => {
 
 
         // Kiểm tra role của người dùng
-        if (req.user.userRole !== 'manager') {
+        if (req.user.role !== 'manager') {
             return res.status(403).json({ message: 'Access denied. Not authorized as manager.' })
         }
 
