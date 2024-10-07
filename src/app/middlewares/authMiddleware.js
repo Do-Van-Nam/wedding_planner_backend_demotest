@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken')
 const cookieParser = require('cookie-parser')
 
-const authMiddleware = (req, res, next) => {
+const authMiddleWare = (req, res, next) => {
     // const authHeader = req.header('Authorization')
 
     // if (!authHeader) return res.status(401).json({ message: 'No token, authorization denied' })
@@ -19,4 +19,4 @@ const authMiddleware = (req, res, next) => {
     }
 }
 
-module.exports = {authMiddleware}
+module.exports = authMiddleWare

@@ -1,12 +1,12 @@
 const express = require('express')
 const router = express.Router()
 const { getBuildingsByOwnerId,getBuildingById, updateBuilding, deleteBuilding, createBuilding } = require('../app/controllers/BuildingController')
-const managerAuthMiddleware = require('../app/middlewares/managerAuthMiddleware')
+const managerAuthMiddleWare = require('../app/middlewares/managerAuthMiddleWare')
 
 // router.get('/:id', getBuildingById)
-router.get('/:ownerId',managerAuthMiddleware, getBuildingsByOwnerId)
-router.put('/:id',managerAuthMiddleware, updateBuilding)
-router.delete('/:id',managerAuthMiddleware, deleteBuilding)
+router.get('/:ownerId',managerAuthMiddleWare, getBuildingsByOwnerId)
+router.put('/:id',managerAuthMiddleWare, updateBuilding)
+router.delete('/:id',managerAuthMiddleWare, deleteBuilding)
 router.post('/', createBuilding)
 
 module.exports = router
