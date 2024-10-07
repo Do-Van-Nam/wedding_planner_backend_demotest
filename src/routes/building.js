@@ -7,6 +7,6 @@ const managerAuthMiddleware = require('../app/middlewares/managerAuthMiddleware'
 router.get('/:ownerId',managerAuthMiddleware, getBuildingsByOwnerId)
 router.put('/:id',managerAuthMiddleware, updateBuilding)
 router.delete('/:id',managerAuthMiddleware, deleteBuilding)
-router.post('/',managerAuthMiddleware, createBuilding)
+router.post('/', createBuilding)
 
 module.exports = router

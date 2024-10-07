@@ -7,14 +7,14 @@ const MONGODB_URL  = process.env.MONGODB_URL
 async function connect(){
     try { 
         await mongoose.createConnection(MONGODB_URL,
-            {    useNewUrlParser: true,
-            useUnifiedTopology: true,
+            {useNewUrlParser:true,
+            useUnifiedTopology:true
         })
-        console.log("connected to dbbuildings")
+        console.log('connected to db plan')
     } catch (error) {
-        console.log("fail to connect dbbuildings")
+        console.log("fail to connect dbaccs")
         console.log(error)
     }
 }
 
-module.exports  = {connect}
+module.exports= {connect}

@@ -4,6 +4,7 @@ const AccRouter = require('./acc')
 const BuildingRouter = require('./building')
 const RoomRouter = require('./room')
 const LogoutRouter = require('./logout')
+const PlanRouter = require('./plan')
 
 function route(app){
     app.use('/signup',SignupRouter)
@@ -12,6 +13,7 @@ function route(app){
     app.use('/building',BuildingRouter)
     app.use('/room',RoomRouter)
     app.use('/logout',LogoutRouter)
+    app.use('/plan',PlanRouter)
 }
 
 module.exports = route
